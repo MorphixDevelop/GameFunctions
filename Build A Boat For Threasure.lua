@@ -1,7 +1,9 @@
 function Delete(Object)
-    local DeleteTool = game:GetService("Players").LocalPlayer.Backpack.DeleteTool.RF or game:GetService("Players").LocalPlayer.Character.DeleteTool.RF
-    
-    DeleteTool:InvokeServer(Object)
+    if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("DeleteTool") then
+        game:GetService("Players").LocalPlayer.Backpack.DeleteTool.RF:InvokeServer(Object)
+    elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild("DeleteTool") then
+        game:GetService("Players").LocalPlayer.Character.DeleteTool.RF:InvokeServer(Object)
+    end
 end
 
 function InZone(CPos, VSize, Place)
